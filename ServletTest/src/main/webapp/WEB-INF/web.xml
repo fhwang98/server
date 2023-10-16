@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>ServletTest</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<!--
+		Servlet 설정
+		- 자바 클래스를 호출할 수 있는 가상 URL 생성하기
+		- 가상 주소 매핑 = 가상 URL + 서블릿
+	-->
+	<servlet>
+		<servlet-name>ex01</servlet-name>
+		<servlet-class>com.test.servlet.Ex01</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ex01</servlet-name>
+		<url-pattern>/ex01.do</url-pattern>
+	</servlet-mapping>
+	<!--
+		'/' + 'ex01.do'
+		'/' == http://localhost:8090/servlet
+		+ 'ex01.do'
+	-->
+</web-app>

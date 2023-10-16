@@ -1,0 +1,53 @@
+필기.txt
+
+Servlet
+- 자바 진영에서 웹 애플리케이션을 지원하기 위한 기술
+- 자바로 웹 사이트를 만드는 기술
+- 첫번째 웹 서버 기술 ~ 현재 모든 기술의 기반
+- 순수 자바 + 서블릿 규격
+- 자바 프로그램 > 웹 페이지 생산 > 동적 페이지
+
+"자바로 웹사이트를 만든다?"
+
+1. 정적 페이지
+	- 누가? 언제? > 항상 동일한 콘텐츠를 제공
+	- 캔커피
+
+2. 동적 페이지
+	- 누가? 언제? > 다른 콘텐츠를 제공 
+	- 주소 동일 > 내용이 바뀐다?
+	- 주문(URL 요청) > 바리스타 커피 제조 > 제공
+	- 미리 준비된 상품 없음 > 주문 즉시 페이지를 생성 > 제공
+
+
+Servlet Class
+- 바리스타(알바생)
+- 클라이언트(브라우저)의 요청에 따라, 동적으로 웹 페이지를 생산하는 클래스
+- 서블릿 기술을 구현한 실제 클래스
+
+
+Servlet Class 작성 규칙
+
+1. 서블릿 클래스 선언
+	a. javax.servlet.Servlet 인터페이스를 구현한다.			> 복잡함. 고비용. 구현이 자유롭다.
+	a. javax.servlet.http.HttpServlet 클래스를 상속받는다.	> 단순함. 저비용.
+	- HttpServlet 사용!!!
+
+2. doGet/doPost 메소드 선언 > 예약된 이름의 메소드 > 요청 메소드
+	- 둘 중 하나 선언 or 둘 다 선언
+	- 클라이언트(브라우저)의 요청이 들어오면 자동으로 호출되는 메소드
+	- "주문하기" 메소드
+	- 커피 만드는 메소드 > HTML 페이지를 만드는 메소드
+	- 메소드 작성 규칙
+		a. 매개변수
+			1. java.servlet.http.HttpServletRequest
+			2. java.servlet.http.HttpServletResponse
+		b. 예외 미루기
+			1. java.io.IOException
+			2. java.servlet.ServletException
+
+3. 동적 HTML 페이지 작성 구현
+	- doGet/doPost 메소드의 구현부 > HTML 페이지를 만들기 위한 자바 코드 작성
+	- HttpServletResponse 객체의 getWriter() 메소드 호출 > PrintWriter 객체 반환
+	- PrintWriter 객체의 printXXX("태그) 메소드를 사용해서 HTML 페이지를 작성한다. > 동적으로 웹페이지 생산
+	- 페이지 완성 > 브라우저에게 반환 > 웹 페이지 출력
