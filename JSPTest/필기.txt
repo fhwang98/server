@@ -1,0 +1,145 @@
+Servlet > 자바 베이스(*.java)
+- 장점: 자바를 그대로 사용할 수 있다.
+- 단점: 클라이언트 코드를 작성하기가 불편하다. > 문자열 처리
+
+JSP > HTML 페이지 베이스(*.jsp)
+- 장점: HTML 기반 > 클라이언트 코드를 작성하기가 쉽다. + 추가 자바 코드 작성
+- 단점: 자바 코드를 작성하기가 불편하다.
+
+Servlet > (개발 편의성) > JSP
+
+
+
+JSP 구성 요소
+
+1. JSP 지시자, JSP Directive
+	- <%@ %>
+	- page 지시자
+	- include 지시자
+	- taglib 지시자 > 나중에
+
+2. 스크립트 요소, Scripting Elements
+	- <% %>
+	- 스크립틀릿
+	- 익스프레션
+	- 선언부
+
+3. 액션 태그, Action Tags
+	- <jsp:XXX>, <c:XXX>
+	- 기본 액션 태그
+	- 확장 액션 태그
+	- 사용자 정의 액션 태그
+
+	
+page 지시자
+- "ex01.jsp"
+
+- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+   
+- JSP 페이지의 항상 첫번째 라인에 위치
+- 1개 이상 작성 가능
+- JSP의 실행환경(JSP 컨테이너 == 톰캣)에게 현재 페이지의 정보를 알려준다.
+
+	a. language="java"
+		- JSP 페이지에서 사용할 서버 프로그래밍 언어 지정
+		
+	b. contentType="text/html; charset=UTF-8"
+		- JSP 페이지 내용물에 대한 기술 > 브라우저에게 전달할 HTML 페이지
+		- text/html: MIME Type > HTML 문서 > 브라우저에게 전달
+		- charset=UTF-8: > HTML 문서의 인코딩 > 브라우저에게 전달
+		 
+	c. pageEncoding="UTF-8"
+		- JSP 페이지 인코딩
+		
+	d. import="java.util.Calendar
+		- 자바 > import 구문 동일
+		- 패키지/클래스 참조
+
+		
+include 지시자
+- "ex02.jsp"
+- <%@ include file="URL" %>
+- 지정된 URL > 페이지(JSP, HTML, Text 등)를 현재 JSP 페이지의 일부로 사용하는 기능
+- 조각 페이지
+
+
+
+
+스크립틀릿 + 익스프레션
+
+스크립틀릿, Scriptlet
+- <% %>
+- HTML 페이지 영역에서(JSP) Java를 사용 가능하게 영역을 제공
+- <% 자바 영역 %>
+
+익스프레션, Expression
+- <%= %>
+- 자바의 값(데이터)을 HTML 문서에 출력하는 역할
+
+- "ex03.jsp"
+- "ex04.jsp"
+- "ex05.jsp"
+
+
+
+
+선언부
+- <%! %>
+- 멤버 변수와 멤버 메소드를 선언하는 영역
+- 일반 자바 클래스를 활용하는 일이 더 많다.
+
+- "ex06.jsp"
+- "MyMath.java"
+
+
+
+
+JSP 내장 객체, JSP Implicit Object
+- 개발자가 직접 생성하지 않아도 JSP(톰캣)이 미리 만들어서 제공하는 객체
+- 예약어 제공
+- ** request, response, session, pageContext
+- * out, application
+- config, page, exception 등 ..
+ 
+***** request, pageContext, session, application
+	- 객체 내부에 사용자(개발자) 데이터를 저장할 수 있는 컬렉션을 가지고 있다.
+	- Map
+	- void setAttribute(String key, Object value)
+	- Object getAttribute(String key)
+
+	
+
+request 객체
+- HttpServletRequest
+- 클라이언트 > (행동) > 서버
+
+1. 클라이언트에서 서버로 전송한 데이터를 가져오기
+	- "ex07.jsp" > 사용자로부터 데이터를 입력 + 서버 전송
+	- "ex07_ok.jsp" > 데이터 수신 + 가공/처리 + 피드백
+	
+	- "ex08.jsp" > 모든 입력 컨트롤 테스트(송수신)
+	- "ex08_ok.jsp"
+
+2. 클라이언트에서 서버로 전송한 데이터 인코딩 처리
+
+3. 클라이언트에서 서버로 전송할 때의 여러가지 관련 정보를 가져오기
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
