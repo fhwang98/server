@@ -51,3 +51,31 @@ Servlet Class 작성 규칙
 	- HttpServletResponse 객체의 getWriter() 메소드 호출 > PrintWriter 객체 반환
 	- PrintWriter 객체의 printXXX("태그) 메소드를 사용해서 HTML 페이지를 작성한다. > 동적으로 웹페이지 생산
 	- 페이지 완성 > 브라우저에게 반환 > 웹 페이지 출력
+	
+	
+
+	
+	
+	
+서블릿 기술
+- 자바(베이스 - JDK) + 웹 구현(추가 - )
+
+아파치 톰캣
+- 웹서버의 역할
+- 자바로 서블릿 or JSP를 구현할 수 있는 수많는 *.jar파일 제공
+- 서버측에서 서블릿과 JSP를 동작하게 만드는 역할
+
+
+
+
+
+데이터 입력 > (전송) > 데이터 수신
+1. 데이터 입력 + 전송 > 페이
+2. 데이터 수신 프로그램 > 결과 페이지
+
+com.test.servlet > "Ex02_Send.java"		: 입력 + 전송
+				 > "Ex02_Recieve.java"	: 수신 + 처리
+				 
+
+
+Servlet > JSP > Servlet + JSP

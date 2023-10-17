@@ -17,6 +17,8 @@
 		- 자바 클래스를 호출할 수 있는 가상 URL 생성하기
 		- 가상 주소 매핑 = 가상 URL + 서블릿
 	-->
+	
+	<!-- ex01예제 -->
 	<servlet>
 		<servlet-name>ex01</servlet-name>
 		<servlet-class>com.test.servlet.Ex01</servlet-class>
@@ -30,4 +32,39 @@
 		'/' == http://localhost:8090/servlet
 		+ 'ex01.do'
 	-->
+	
+	
+	
+	<!-- hi예제 -->
+	<servlet>
+		<servlet-name>hi</servlet-name>
+		<servlet-class>com.test.servlet.Hi</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>hi</servlet-name>
+		<url-pattern>/hi.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<!-- Ex02예제 -->
+	<servlet>
+		<servlet-name>send</servlet-name>
+		<servlet-class>com.test.servlet.Ex02_Send</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>send</servlet-name>
+		<url-pattern>/send.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>receive</servlet-name>
+		<servlet-class>com.test.servlet.Ex02_Receive</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>receive</servlet-name>
+		<url-pattern>/receive.do</url-pattern>
+	</servlet-mapping>
+	
+	
 </web-app>
