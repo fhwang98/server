@@ -120,10 +120,112 @@ request 객체
 	
 	- "ex08.jsp" > 모든 입력 컨트롤 테스트(송수신)
 	- "ex08_ok.jsp"
+	
+	- "ex09.jsp"
+	- "ex09_ok.jsp"
+	
 
 2. 클라이언트에서 서버로 전송한 데이터 인코딩 처리
 
 3. 클라이언트에서 서버로 전송할 때의 여러가지 관련 정보를 가져오기
+	- "ex10_request.jsp"
+
+
+
+
+
+response 객체= HttpServletResponse 
+
+1. 서버에서 클라이언트로 돌려주는 HTML 페이지 제작
+	- response.getWriter() > PrintWriter > HTML 제작
+	
+2. 서버에서 클라이언트로 돌려주는 HTML 페이지 인코딩
+	- response.setCharacterEncoding("UTF-8") // 서블릿
+	- 페이지 지시자 > contentType="charset=UTF-8" // JSP
+
+3. 서버에서 클라이언트로 돌려주는 HTML 페이지 MIME 설정
+	- contentType="text/html"
+	- 브라우저에게 돌려주는 페이지의 형식이 HTML 페이지입니다. 라고 알려주는 역할
+
+1. 2. 3 > JSP에서는 건드릴 일 없음
+
+4. 페이지 이동하기
+	- "ex11_response_1.jsp"
+	- "ex11_response_2.jsp"
+
+
+
+
+
+pageContext 객체
+- "ex12_pagecontext_1.jsp"
+- "ex12_pagecontext_2.jsp"
+
+
+out 객체
+- "ex13_out.jsp"
+
+
+
+pageContext, request, session, application
+- 내부에 데이터를 저장하는 공간이 있다.(Map)
+- setAttribute(), getAttribute()
+
+
+
+
+session 객체
+- 클라이언트(브라우저)의 세션 정보(접속 ~ 종료 : 개인 정보)를 저장/관리하는 객체
+
+웹사이트 == 웹응용프로그램 == 웹애플리케이션
+
+application 객체
+- 애플리케이션(웹 사이트)의 전체적인 정보를 관리/조작하는 객체
+
+- "ex14_session_application.jsp"
+
+
+
+- "ex15_session.jsp"
+- "ex15_set.jsp"
+- "ex15_del.jsp"
+- "ex15_interval.jsp"
+- "ex15_reset.jsp"
+
+
+
+
+
+파일 업로드/다운로드
+- 브라우저와 웹서버간의 파일 복사
+- 업로드: 클라이언트 자원 > (복사) > 서버측
+- 다운로드: 서버 자원 >(복사) > 클라이언트측
+
+
+파일 업로드 라이브러리
+- cos library
+- http://www.servlets.com > COS File Upload Library > cos-22.05.zip
+- Dynamic Web Project 에서만 가능한 방법 
+- webapp > WEB-INF > lib > cos.jar 복사 // 톰캣이 대신 참조
+- webapp > "files" 폴더 생성 // 업로드한 파일을 저장할 폴더(개발자맘대로)
+
+
+단일 파일 업로드
+- "ex16.jsp"
+- "ex16_ok.jsp"
+
+다중 파일 업로드
+- "ex17.jsp"
+- "ex17_ok.jsp"
+
+이미지 뷰어
+- "ex18.jsp"
+- "ex18_ok.jsp"
+- "ex18_del.jsp"
+
+
+
+
 
 
 

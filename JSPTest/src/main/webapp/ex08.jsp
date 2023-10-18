@@ -58,15 +58,72 @@
 				<label><input type="radio" name="rb" value="female">여자</label>
 			</td>
 		</tr>
+		<tr>
+			<th>셀렉트 박스</th>
+			<td>
+				<select name="sel1">
+					<option value="1">사과</option>
+					<option value="2">바나나</option>
+					<option value="3">포도</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>셀렉트 박스</th>
+			<td>
+				<select name="sel2" multiple>
+					<option value="1">사과</option>
+					<option value="2">바나나</option>
+					<option value="3">포도</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>히든 태그</th>
+			<td><input type="hidden" name="txt4" value="hong"></td>
+		</tr>
+		<tr>
+			<th>날짜</th>
+			<td><input type="date" name="regdate"></td>
+		</tr>
+		<tr>
+			<th>범위</th>
+			<td><input type="range" name="min" min="10" max="1000" step="10"></td>
+		</tr>
+		<tr>
+			<th>색상</th>
+			<td><input type="color" name="color" style="height: 50px;"></td>
+		</tr>
 	</table>
 	<div>
 		<input type="submit" value="보내기">
+		<input type="button" value="클릭" id="btn1">
+		<input type="button" value="클릭" id="btn2">
 	</div>
+	<input type="hidden" name="count">
 	</form>
+	
+	<h1>링크</h1>
+	
+	<div>
+		<a href="ex08_ok.jsp?id=hong&pw=1234">링크입니다.</a>
+	</div>
+	
 
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="http://pinnpublic.dothome.co.kr/cdn/example-min.js"></script>
 	<script>
+	
+		let count = 0; // 서버로 전송하고 싶다.
+		
+		$('#btn1').click(function() {
+			count++;
+			$('input[name=count]').val(count);
+		});
+		
+		$('#btn2').click(function() {
+			location.href = 'ex08_ok.jsp?id=test&pw=1111';
+		});
 		
 	</script>	
 </body>
