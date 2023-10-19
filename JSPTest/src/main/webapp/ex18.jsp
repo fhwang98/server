@@ -92,7 +92,7 @@
 	<% for (File file : list) { %>
 		<div class="item">
 			<img src="pic/<%= file.getName()%>">
-			<div>&times;</div>
+			<div title="delete" onclick="deleteImage('<%= file.getName() %>')">&times;</div>
 		</div>
 	<% } %>
 	
@@ -114,7 +114,12 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="http://pinnpublic.dothome.co.kr/cdn/example-min.js"></script>
 	<script>
-		
+		function deleteImage(filename) {
+			//alert(filename);
+			if (confirm('delete?')) {
+				location.href = 'ex18_del.jsp?filename=' + filename;
+			}
+		}
 	</script>	
 </body>
 </html>
