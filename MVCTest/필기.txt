@@ -1,0 +1,42 @@
+새 프로젝트 > dynamic web project > "MVCTest" > next > next > context root "mvc" > generate web.xml
+
+1. Servlet
+	- 장점 : 자바 기반 > 자바 코드 용이
+	- 단점 : 클라이언트 코드 불편
+2. JSP
+	- 장점 : 클라이언트 코드 용이
+	- 단점 : 자바 코드 불편
+3. Servlet + JSP
+	- 자바코드 > 서블릿에서 작성
+	- 클라이언트 코드 > JSP에 작성
+
+
+
+거의 대부분의 JSP 페이지
+1. 상단	> <% %> 자바 코드 작성
+2. 중하단	> HTML 코드 작성
+
+
+MVC 디자인 패턴
+View : 출력 담당(HTML 페이지 생산)	>	JSP
+Control : 요청 ~ 응답까지 전체 관리	>	Servlet
+Model : 데이터 처리				>	*.java > Oracle DB 처리
+
+
+JSP Model 1 > 자바 코드 + 클라이언트 코드 > 1장의 JSP 페이지에 작성하는 모델 (~ AuthTest예제까지)
+JSP Model 2 > 서블릿(자바) + JSP(클라이언트) 코드 분리 > MVC 디자인 패턴 채용
+
+JSP MVC Model(엄밀히 말하면 잘못된 표현)
+
+Hello
+- "com.test.mvc" > "Hello.java"
+- webapp > "hello.jsp" > 이동
+- webapp > WEB-INF > views > "hello.jsp" > 404오류 페이지를 찾을 수 없음
+
+
+WEB-INF 특성
+- 시스템 폴더
+- 톰캣만 접근할 수 있는 폴더
+- 브라우저는 접근이 불가능한 폴더
+- 내부 시스템 자원을 관리하는 보안 폴더
+

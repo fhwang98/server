@@ -1,0 +1,57 @@
+새 프로젝트 > dynamic web project > "Memo" > next > next > context root "memo" > generate web.xml
+
+1. 주제 > 메모장
+2. 업무 > CRUD
+	- 메모 쓰기(C)
+	- 메모 목록(R)
+	- 메모 읽기(R)
+	- 메모 수정(U)
+	- 메모 삭제(D)
+3. DB
+	- Memo > "script.sql"
+4. 파일
+	- 공통 파일
+		- webapp > WEB-INF > views >  "inc" > "header.jsp"
+						 					> "asset.jsp"
+	- 메모 쓰기
+		- "com.test.memo" > "Add.java"
+						  > "AddOk.java"
+		- webapp > WEB-INF > "views" > "add.jsp"
+									 > "addok.jsp"
+	- 메모 목록
+		- com.test.memo > "List.java"
+		- views > "list.jsp"
+	- 메모 읽기
+		- com.test.memo > "View.java"
+		- views > "view.jsp"
+	- 메모 수정
+		- com.test.memo > "Edit.java"
+						> "EditOk.java"
+		- views > "edit.jsp"
+				> "editok.jsp"
+	- 메모 삭제
+		- com.test.memo > "Del.java"
+						> "DelOk.java"
+		- views > "del.jsp"
+				> "delok.jsp"
+	- 템플릿
+		- com.test.memo > "Template.java"
+		- views > "template.jsp"
+	- JDBC
+		- com.test.memo > DBUtil.java 복사
+		- WEB-INF > lib > ojdbc.jar 복사
+	- DB 담당자
+		- "com.test.memo.persist"
+		or
+		- "com.test.memo.repository" > "MemoDAO.java" > 채택
+		or
+		- "com.test.memo.dao"
+		
+		- "com.test.memo.model" > "MemoDTO.java" > 전달할 데이터 객체 
+		- "com.test.memo.dto" 
+		
+
+@WebServlet("/template.do") > 모든 파일을 개별적으로 관리
+프로젝트 할 때는 > web.xml 로 한곳에서 관리하는게 용이
+
+페이지 미리 만들고 > template 작업까지 > 베이스작업 > 개인작업x 팀작업o
