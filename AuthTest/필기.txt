@@ -1,0 +1,30 @@
+새 프로젝트 > dynamic web project > "AuthTest" > next > next > context root "auth" > generate web.xml
+
+인증, Authentication 
+- 현재 접속자가 해당 사이트의 구성원인지 확인하는 작업
+- 로그인(Sign in), 로그아웃(Sign out)
+- 해당 접속자가 구성원인지 확인 작업(아이디, 암호) > 인증 티켓 발급 > 사이트내에서 자유롭게 이동 + 인증 티켓(증명)
+
+허가, Authorization
+- 특정 행동을 할 때 권한이 있는지 확인하는 작업
+
+웹 보안 = 인증 + 허가
+	  = 세션 기반 인증 (O)
+	  = 쿠키 기반 인증
+
+
+
+
+파일
+
+- "com.test.auth" > "DBUtil.java" 복사
+
+- webapp > "index.jsp" //시작 페이지
+-		 > "auth" > "login.jsp" //로그인 폼 페이지
+-		 >		  > "loginok.jsp" //로그인 처리 페이지(+ 인증 작업)
+-		 >		  > "logoutok.jsp" //로그아웃 처리 페이지
+- 		 > "member" > "member.jsp" //회원 전용 페이지(+ 허가 작업)
+- 		 > "admin" > "admin.jsp" // 관리자 전용 페이지(+ 허가 작업)
+
+
+                                                       

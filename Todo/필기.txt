@@ -1,0 +1,24 @@
+새 프로젝트 > Dynamic web project > “Todo” > next > next > context root : “todo” > generate web.xml 체크
+
+Todo List, 메모장, 게시판 > CRUD 집중 > 예제
+
+Todo List
+1. 주제 
+2. 업무
+	- 할일 쓰기
+	- 할일 보기(목록)
+	- 할일 수정하기(내용 수정x) > 완료 상태로 수정(O)
+	- 할일 삭제하기
+3. DB
+	- Todo > script.sql
+4. 화면(+ 페이지) > 눈에 보이는 페이지 + 눈에 안보이는 페이지
+	- 할일 보기(목록) 페이지 > 	webapp > list.jsp
+	- 할일 쓰기 페이지 > 		webapp > add.jsp, addok.jsp
+	- 할일 수정 페이지 >		webapp > editok.jsp
+	- 할일 삭제 페이지 > 		webapp > delok.jsp
+	- 템플릿 페이지 >			webapp > template.jsp
+5. 리소스
+	- 조각 페이지
+		- webapp > inc > header.jsp > Todo 페이지 헤더
+		- webapp > inc > asset.jsp > CSS, JavaScript 코드
+6. WEB-INF > lib > ojdbc.jar 복사
