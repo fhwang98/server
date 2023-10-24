@@ -55,9 +55,9 @@
 	</div>
 
 	<script>
-		/* $('#btn1').click(function() { */
+		 $('#btn1').click(function() { 
 			$('#result').text('홍길동');
-		/* }); */
+		 });
 	</script>	
 </body>
 </html>

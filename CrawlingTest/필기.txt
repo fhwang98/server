@@ -1,0 +1,67 @@
+새 프로젝트 > dynamic web project > "CrawlingTest" > next > next > context root "crawling" > generate web.xml 체크
+
+웹 크롤링(Crawling), 웹 스크래핑(Scraping)
+- 웹 사이트(웹 페이지)에서 데이터를 수집하는 행위
+( 크롤링 > 타겟 없이 데이터 다 긁어옴 > 추후에 데이터 정리
+ 스크래핑 > 타겟을 미리 정해서 필요한 데이터를 긁어옴
+ 딱히 구분할 필요는 x)
+ 
+ a. 상대방(웹사이트)이 나에게 DB권한을 준다면... > 가장 좋은 방법 > 불가능;;;
+ b. 상대방이 외부에 OpenAPI 공개 > JSON, XML > 제한적 > 무난한 방법
+ c. 웹 페이지의 소스를 긁어서 원하는 데이터를 추출 > 프로그램
+ 
+ 크롤링 주의점!!
+ - 허가 문제, 저작권 문제
+ - 정도껏~ > 긁어오는 작업 > 프로그램 > 속도 빠름!! & 횟수 많음!! > 서버 입장 > 서버 비용 & 트래픽 증가
+ 
+ 크롤링 사전 지식
+ 1. HTML 이해
+ 2. CSS 선택자 이해, JavaScript 이해
+ 3. Java 이해
+
+
+- "com.test.java" > "Ex01.java"
+-				  > "Ex02.java"
+- Jsoup > HTML parser (HTML 구문 분석 > 처리)
+- https://jsoup.org/
+- webapp > WEB-INF > lib > "jsoup-1.16.2.jar"
+
+
+- Jsoup이 할 수 없는 행동
+- "com.test.java" > "Ex03.java"
+- 로그인을 해야 확인할 수 있는 데이터
+- 불가능
+- 				  > "Ex01.java"
+- JavaScript로 동적으로 생성되는 데이터
+- 불가능
+
+
+
+- "com.test.java" > "Ex04.java"
+- Selenium(셀레니움)
+- 테스트 자동화 도구
+- 1. 셀레니움 라이브러리
+- https://www.selenium.dev/
+- download > java
+- 2. 브라우저 드라이버
+- 크롬 드라이버
+- 사용하는 버전과 일치하는 버전 다운로드
+- https://googlechromelabs.github.io/chrome-for-testing/#stable
+- chrome driver > mac-arm-64 다운로드
+
+- 1. 크롬드라이브 > class/dev/chromedriver
+- 2. 셀레니움 > lib > jar 복사
+
+
+
+
+1. Jsoup
+	> 정적 페이지(자바 스크립트 개입되지 않은 페이지), 미인증 페이지(로그인x)
+	> 속도 빠름
+
+2. Selenium
+	> 모든 페이지(로그인o, 자바스크립트 동적 컨텐츠)
+	> 속도 느림
+	
+	
+웹 프로젝트에 크롤링 반드시 포함!!
