@@ -1,4 +1,4 @@
-새 프로젝트 > dynamic web project > "Memo" > next > next > context root "memo" > generate web.xml
+새 프로젝트 > dynamic web project > "Memo" > next > next > context root "memo" > generate web.xml 체크
 
 1. 주제 > 메모장
 2. 업무 > CRUD
@@ -49,9 +49,15 @@
 		
 		- "com.test.memo.model" > "MemoDTO.java" > 전달할 데이터 객체 
 		- "com.test.memo.dto" 
+	- JSTL
+		- WEB-INF > lib > jstl-1.2.jar 복사
 		
 
 @WebServlet("/template.do") > 모든 파일을 개별적으로 관리
 프로젝트 할 때는 > web.xml 로 한곳에서 관리하는게 용이
 
 페이지 미리 만들고 > template 작업까지 > 베이스작업 > 개인작업x 팀작업o
+
+
+
+서블릿에는 절대 JDBC 코드가 있으면 안됨!!(Connection, Statement 등...) > DB작업은 DAO에서 > 안그러면 오류가 생겼을 때 혼란

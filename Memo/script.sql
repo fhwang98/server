@@ -29,3 +29,6 @@ UPDATE tblMemo SET memo = '수정할 내용' WHERE seq = 1;
 
 -- 메모 삭제
 DELETE FROM tblMemo WHERE seq = 1;
+
+COMMIT;
+
