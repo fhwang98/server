@@ -66,7 +66,7 @@ public class AjaxDAO {
 		
 		try {
 			
-			String sql = "SELECT * FROM tblMemo";
+			String sql = "SELECT * FROM tblMemo ORDER BY seq DESC";
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 
@@ -125,6 +125,85 @@ public class AjaxDAO {
 			System.out.println("AjaxDAO.get()");
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	public int check(String id) {
+		try {
+			
+			String sql = "SELECT count(*) as cnt FROM tblUser WHERE id = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				
+				return rs.getInt("cnt"); 
+			}
+			
+		} catch (Exception e) {
+			System.out.println("AjaxDAO.check()");
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public void updatePosition(CatDTO dto) {
+		
+		try {
+			
+			String sql = "UPDATE tblCat SET x = ? , y = ? WHERE catid =?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getX());
+			pstat.setString(2, dto.getY());
+			pstat.setString(3, dto.getCatid());
+			
+			pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("AjaxDAO.updatePosition()");
+			e.printStackTrace();
+		}
+		
+	}
+
+	public ArrayList<CatDTO> listCat() {
+		
+		try {
+			
+			String sql = "SELECT * FROM tblCat";
+			
+			stat = conn.createStatement();
+			
+			rs = stat.executeQuery(sql);
+			
+			ArrayList<CatDTO> list = new ArrayList<CatDTO>();
+			
+			while (rs.next()) {
+				
+				// 레코드 1줄 > CatDTO 1개
+				CatDTO dto = new CatDTO();
+				dto.setSeq(rs.getString("seq"));
+				dto.setX(rs.getString("x"));
+				dto.setY(rs.getString("y"));
+				dto.setCatid(rs.getString("catid"));
+			
+				list.add(dto);
+			}
+			
+			rs.close();
+			stat.close();
+			conn.close();
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println("AjaxDAO.listCat()");
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 	

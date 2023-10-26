@@ -78,10 +78,32 @@ ajax.send(); // 서버와 연결해라! > connect
 
 
 
-
+- 데이터 수신
 - com.test.controller > "Ex04.java"
 -					  > "Ex04Data.java"
 - views > "ex04.jsp"
+
+
+- 데이터 송신
+- com.test.controller > "Ex05.java"
+-					  > "Ex05Data.java"
+- views > "ex05.jsp"
+
+
+
+
+- 아이디 중복검사 예제
+- com.test.controller > "Ex06.java"
+-					  > "Ex06Data.java"
+- views > "ex06.jsp"
+
+
+- 고양이
+- com.test.controller > "Ex07.java"
+-					  > "Ex07Data.java"
+- views > "ex07.jsp"
+- https://releases.jquery.com/ui/
+
 
 
 
