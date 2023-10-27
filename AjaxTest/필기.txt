@@ -108,6 +108,27 @@ ajax.send(); // 서버와 연결해라! > connect
 
 
 
+- com.test.controller > "Ex08.java"
+- com.test.service > "List.java"
+-				   > "Add.java"
+-				   > "Edit.java"
+- views > "ex08.jsp"
+
+- jackson library
+- mvn repository > https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+- 2.15.2 version > jar파일 다운
+
+- JSON simple
+- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+- 1.1.1 version
+
+
+
+
+일반적으로는 용도에 따라 페이지를 따로 만들지만
+Ajax로 페이지를 만들면 crud 모든 페이지를 한페이지에 넣음
+페이지가 복잡해진다
+
 
 
 
