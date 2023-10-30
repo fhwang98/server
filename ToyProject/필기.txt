@@ -1,0 +1,92 @@
+새 프로젝트
+- New > Dynamic Web Project > "ToyProject" > Context root: "toy" > web.xml 체크O
+
+주제
+1. 게시판
+2. 회원 관리(인증)
+3. 기타 등..
+4. 프로젝트 경험
+
+
+요구분석
+- 익숙
+
+
+전체 구성(페이지 관계도)
+- draw.io
+
+
+화면 설계 & 스토리 보드
+- 생략
+
+
+데이터베이스
+- ERD
+- ToyProject > "ddl.sql"
+			 > "dml.sql"
+
+
+구현
+- 패키지
+	1. com.test.toy: 메인 패키지
+	2. com.test.toy.user: 회원
+	3. com.test.toy.user.repository: DB
+	4. com.test.toy.user.model: DB
+- 파일
+	1. com.test.toy
+		- Index.java: 시작 페이지
+		- Template.java: 템플릿 페이지
+		- DBUtil.java	
+	2. com.test.toy.user
+		- Register.java: 회원 가입
+		- Unregister.java: 회원 탈퇴
+		- Login.java: 로그인
+		- Logout.java: 로그아웃
+		- Info.java: 회원 정보
+	3. com.test.toy.user.repository
+		- UserDAO.java
+	4. com.test.toy.user.model
+		- UserDTO.java
+- 뷰
+	1. views
+		a. 루트
+			- index.jsp: 시작 페이지
+			- template.jsp: 템플릿 페이지
+		b. user
+			- register.jsp: 회원 가입
+			- unregister.jsp: 회원 탈퇴
+			- login.jsp: 로그인
+			- info.jsp: 회원 정보
+		c. inc	
+			- asset.jsp: CSS, JS
+			- header.jsp
+
+- 라이브러리
+	- lib
+		- ojdbc6.jar
+		- jstl-1.2.jar
+		- cos.jar
+		- lombok.jar
+		- json-simple-1.1.1.jar
+
+- 클라이언트 라이브러리
+	- webapp > asset > css > toy.css
+
+- 프로필 사진 경로
+	- webapp > asset > pic
+
+
+기본 페이지(=레이아웃)
+- Template.java
+- template.jsp
+
+
+
+Favicon
+-Favorite icon
+- icon 파일 필요(*.ico) > "favicon.ico"
+- weapp > asset > favicon.ico
+
+
+
+

@@ -1,0 +1,45 @@
+/* webapp > asset > css > toy.css */
+
+html {
+	overflow-y: scroll;
+}
+
+#header {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #CCC;
+	height: 60px;
+}
+
+#header > h1 {
+	margin: 1rem;
+	font-size: 1.2rem;
+}
+
+#header > h1 .meterial-symbols-outlined {
+	transform: translate(0px, 5px);
+	font-size: 1.8rem;
+}
+
+#header > nav {
+	margin: 1rem;
+}
+
+#header > nav > a {
+	font-size: 16px;
+	padding-right: 2px;
+}
+
+#header > nav > a::after {
+	content: ' •';
+}
+
+#header > nav > a:last-child::after {
+	content: '';
+}
+
+#main {
+	margin: 1rem;
+}
+
+
