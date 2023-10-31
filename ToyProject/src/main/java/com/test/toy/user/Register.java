@@ -66,7 +66,11 @@ public class Register extends HttpServlet {
 			dto.setPw(pw);
 			dto.setName(name);
 			dto.setEmail(email);
-			dto.setPic(pic);
+			if (pic != null && !pic.equals("")) {
+				dto.setPic(pic);
+			} else {
+				dto.setPic("pic.png");
+			}
 			dto.setIntro(intro);
 			
 			UserDAO dao = new UserDAO();

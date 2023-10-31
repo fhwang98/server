@@ -94,4 +94,53 @@ public class UserDAO {
 		return null;
 	}
 
+	public int unregister(String id) {
+		
+		try {
+			String sql = "UPDATE tblUser SET ing = 'n' WHERE id = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("UserDAO.unregister()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public UserDTO get(String id) {
+		
+		try {
+			
+			String sql = "SELECT * FROM tblUser WHERE id = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+			
+			rs = pstat.executeQuery();	
+			
+			if (rs.next()) {
+				
+				UserDTO dto = new UserDTO();
+				
+				dto.setName(rs.getString("name"));
+				dto.setEmail(rs.getString("email"));
+				dto.setPic(rs.getString("pic"));
+				dto.setIntro(rs.getString("intro"));
+				
+				return dto;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("UserDAO.get()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 }

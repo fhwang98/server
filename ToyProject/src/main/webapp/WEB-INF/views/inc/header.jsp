@@ -18,6 +18,11 @@
 		<span>Project</span>
 	</h1>
 	<nav>
+		
+		<c:if test="${not empty id}">
+		<span style="font-size: 11px; color: #555; margin-right: 10px;">${ name }(${ id })</span>
+		</c:if>
+	
 		<a href="/toy/index.do">Home</a>
 		
 		<c:if test="${empty id}">
@@ -26,6 +31,8 @@
 		</c:if>
 		
 		<c:if test="${not empty id}">
+		<a href="/toy/user/info.do">Info</a>
+		<a href="/toy/user/unregister.do">Unregister</a>
 		<a href="/toy/user/logout.do">Logout</a>
 		</c:if>
 		

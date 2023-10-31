@@ -7,7 +7,12 @@
 <meta charset="UTF-8">
 <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
 <style>
-	
+	#form-list {
+		display: flex;
+	}
+	#form-list form {
+		margin: 3px;
+	}
 </style>
 </head>
 <body>
@@ -31,6 +36,28 @@
 				<button type="submit" class="login primary">로그인하기</button>
 			</div>
 		</form>
+		
+		
+		<!-- 작업하기 편리하게 세팅 -->
+		<hr>
+		<div id="form-list">
+			<form method="POST" action="/toy/user/login.do">
+				<input type="hidden" name="id" value="hong">
+				<input type="hidden" name="pw" value="1111">
+				<button type="submit" class="login primary">홍길동</button>
+			</form>
+			<form method="POST" action="/toy/user/login.do">
+				<input type="hidden" name="id" value="test">
+				<input type="hidden" name="pw" value="1111">
+				<button type="submit" class="login primary">테스트</button>
+			</form>
+			<form method="POST" action="/toy/user/login.do">
+				<input type="hidden" name="id" value="admin">
+				<input type="hidden" name="pw" value="1111">
+				<button type="submit" class="login primary">관리자</button>
+			</form>
+		</div>
+		
 		
 	</main>
 
