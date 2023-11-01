@@ -76,5 +76,96 @@ public class BoardDAO {
 		
 		return null;
 	}
+
+	public BoardDTO get(String seq) {
+		
+		try {
+			
+			String sql = "SELECT tblBoard.*, (SELECT name FROM tbluser WHERE id = tblboard.id) AS name FROM tblBoard WHERE seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();	
+			
+			if (rs.next()) {
+				
+				BoardDTO dto = new BoardDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setContent(rs.getString("content"));
+				dto.setRegdate(rs.getString("regdate"));
+				dto.setReadcount(rs.getInt("readcount"));
+				dto.setId(rs.getString("id"));
+				
+				dto.setName(rs.getString("name"));
+				
+				return dto;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("BoardDAO.get()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	public void updateReadcount(String seq) {
+
+		try {
+			String sql = "UPDATE tblBoard SET readcount = readcount + 1 WHERE seq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+
+			pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("BoardDAO.updateReadcount()");
+			e.printStackTrace();
+		}
+		
+	}
+
+	public int edit(BoardDTO dto) {
+		
+		try {
+			String sql = "UPDATE tblBoard set subject = ?, content = ? WHERE seq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getSubject());
+			pstat.setString(2, dto.getContent());
+			pstat.setString(3, dto.getSeq());
+
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("BoardDAO.edit()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public int del(String seq) {
+		
+		try {
+			String sql = "DELETE FROM tblBoard WHERE seq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+
+			return pstat.executeUpdate();
+			
+
+		} catch (Exception e) {
+			System.out.println("BoardDAO.del()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 	
 }

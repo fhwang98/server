@@ -21,11 +21,12 @@ INSERT INTO tblboard (seq, subject, content, regdate, readcount, id)
 SELECT * FROM tblboard;
 
 
-SELECT
-	seq, subject, id, readcount, regdate,
-	(SELECT name FROM tbluser WHERE id = tblboard.id) AS name
-FROM tblboard ORDER BY seq DESC;
+
 
 SELECT * FROM vwboard;
+
+UPDATE tblboard SET regdate = regdate - 1 WHERE seq <= 2;
+
+
 
 COMMIT;

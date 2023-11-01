@@ -1,22 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="http://pinnpublic.dothome.co.kr/cdn/example-min.css">
+<%@ include file="/WEB-INF/views/inc/asset.jsp" %>
 <style>
 	
 </style>
 </head>
 <body>
-	<!--  -->
+	<!-- del.jsp -->
+	<%@ include file="/WEB-INF/views/inc/header.jsp" %>
+	<main id="main">
+		<h1>게시판 <small>삭제하기</small></h1>
+		<form method="POST" action="/toy/board/del.do">
+		<div>
+			<button type="button" class="back" onclick="location.href='/toy/board/view.do?seq=${seq}';">돌아가기</button>
+			<button type="submit" class="del primary">삭제하기</button>
+		</div>
+		<input type="hidden" name="seq" value="${ seq }">
+		</form>
+	</main>
 
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="http://pinnpublic.dothome.co.kr/cdn/example-min.js"></script>
 	<script>
 		
-	</script>	
+	</script>
 </body>
 </html>

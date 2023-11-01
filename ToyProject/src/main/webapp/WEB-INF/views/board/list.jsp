@@ -40,7 +40,9 @@
 			<tr>
 				<td>${ dto.seq }</td>
 				<td>
-					${ dto.subject }
+				
+					<a href="/toy/board/view.do?seq=${ dto.seq }">${ dto.subject }</a>
+					
 					<c:if test="${ dto.isnew == 1 }">
 					<span class="is-new">new</span>
 					</c:if>
@@ -53,7 +55,9 @@
 		</table>
 		<div>
 			<button type="button" class="list" onclick="location.href='/toy/board/list.do'">목록보기</button>
+			<c:if test="${ not empty id }">
 			<button type="button" class="add primary" onclick="location.href='/toy/board/add.do'">글쓰기</button>
+			</c:if>
 		</div>
 		
 	</main>

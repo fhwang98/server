@@ -26,7 +26,7 @@ public class EncodingFilter implements Filter {
 		//System.out.println("필터 동작");
 		
 		//인코딩 처리
-		req.setCharacterEncoding(encoding);
+		req.setCharacterEncoding(this.encoding);
 		
 		//필터 호출 > 서블릿 호출
 		chain.doFilter(req, resp); // forward() 역할
