@@ -21,6 +21,12 @@ public class Del extends HttpServlet {
 		//Del.java
 		// - del.do?seq=5
 		
+		
+		if (Auth.check(req, resp)) {
+			return;
+		}
+		
+		
 		//1. 데이터 가져오기 
 		String seq = req.getParameter("seq");
 		

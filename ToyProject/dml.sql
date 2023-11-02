@@ -8,6 +8,7 @@ insert into tblUser (id, pw, name, email, lv, pic, intro, ing)
     
 select * from tblUser;
 
+UPDATE tblUser SET lv = 2 WHERE id = 'admin';
 
 UPDATE tblUser SET pic = 'pic.png' WHERE id ='hahaha';
 
@@ -20,13 +21,47 @@ INSERT INTO tblboard (seq, subject, content, regdate, readcount, id)
 
 SELECT * FROM tblboard;
 
-
-
-
-SELECT * FROM vwboard;
-
 UPDATE tblboard SET regdate = regdate - 1 WHERE seq <= 2;
 
 
 
+SELECT * FROM vwboard; -- 목록보기
+
+SELECT * FROM vwboard WHERE subject LIKE '%게시판%'; -- 검색하기
+
+SELECT * FROM vwboard WHERE content LIKE '%게시판%'; -- 검색하기
+
+
+
+
+
 COMMIT;
+
+
+
+
+-- 페이징 > rownum 활용
+
+SELECT * FROM (SELECT a.*, rownum AS rnum FROM vwBoard a) WHERE rnum BETWEEN 1 AND 10;
+SELECT * FROM (SELECT a.*, rownum AS rnum FROM vwBoard a) WHERE rnum BETWEEN 11 AND 20;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select tz_offset('Asia/seoul') from dual;
+
+alter session set time_zone = '+09:00';
+
+ROLLBACK;

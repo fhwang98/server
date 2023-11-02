@@ -27,6 +27,11 @@ public class View extends HttpServlet {
 		//1.
 		String seq = req.getParameter("seq");
 		
+		//검색 데이터 받기
+		String search = req.getParameter("search");
+		String column = req.getParameter("column");
+		String word = req.getParameter("word");
+		
 		//2.
 		BoardDAO dao = new BoardDAO();
 		
@@ -51,6 +56,14 @@ public class View extends HttpServlet {
 		
 		//개행문자 처리
 		dto.setContent(content.replace("\r\n", "<br>"));
+		
+		
+		//내용으로 검색 > 검색어 강조!
+		if (search.equals("y") && column.equals("content")) {
+			//<span style="background-color:gold;color.tomato;"></span>
+			dto.setContent(dto.getContent().replace(word, "<span style=\"background-color:gold;color:tomato;\">" + word + "</span>"));
+		}
+		
 		
 		//3.
 		req.setAttribute("dto", dto);

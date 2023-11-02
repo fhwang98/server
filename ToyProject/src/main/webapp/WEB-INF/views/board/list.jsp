@@ -20,13 +20,58 @@
 		font-size: 13px;
 		color: tomato;
 	}
+	
+	#search-form {
+		text-align: center;
+		margin-bottom: 15px;
+	}
+	
+	#pagebar {
+		text-align: center;
+		margin-bottom: 15px;
+	}
 </style>
 </head>
 <body>
 	<!-- list.jsp -->
 	<%@ include file="/WEB-INF/views/inc/header.jsp" %>
 	<main id="main">
-		<h1>게시판 <small>목록</small></h1>
+		<h1>게시판
+			<small>
+			<c:if test="${ map.search == 'n' }">
+			목록보기
+			</c:if>
+			<c:if test="${ map.search == 'y' }">
+			검색결과
+			</c:if>
+			</small>
+		</h1>
+		
+		<%-- 
+		<div style="text-align:right;">
+			<input type="number" id="page" class="short" min="1" max="${ totalPage }" value="${ nowPage }">
+			<input type="button" value="이동하기" onclick="location.href='/toy/board/list.do?page=' + $('#page').val();">
+		</div>
+		 --%>
+		
+		<%-- 
+		<div style="text-align:right;">
+			<select id="selPage" onchange="location.href='/toy/board/list.do?page=' + $(this).val();">
+				<c:forEach var="i" begin="1" end="${ totalPage }">
+				<option value="${ i }">${ i }</option>
+				</c:forEach>
+			</select>
+			페이지
+		</div>
+		 --%>
+		
+		<%-- 
+		<div>
+			<input type="range" min="1" max="${ totalPage }" style="width: 100%;" value="${ nowPage }" onchange="location.href='/toy/board/list.do?page=' + $(this).val();">
+		</div>
+		 --%>
+		
+		
 		<table id="list">
 			<tr>
 				<th>번호</th>
@@ -41,7 +86,7 @@
 				<td>${ dto.seq }</td>
 				<td>
 				
-					<a href="/toy/board/view.do?seq=${ dto.seq }">${ dto.subject }</a>
+					<a href="/toy/board/view.do?seq=${ dto.seq }&search=${map.search}&column=${map.column}&word=${map.word}">${ dto.subject }</a>
 					
 					<c:if test="${ dto.isnew == 1 }">
 					<span class="is-new">new</span>
@@ -53,6 +98,22 @@
 			</tr>
 			</c:forEach>
 		</table>
+		
+		<!-- 페이지바 -->
+		<div id="pagebar">${ pageBar }</div>
+		
+		
+		<!-- 검색 -->
+		<form id="search-form" method="GET" action="/toy/board/list.do">
+			<select name="column">
+				<option value="subject">제목</option>
+				<option value="content">내용</option>
+				<option value="name">이름</option>
+			</select>
+			<input type="text" name="word" class="long" required>
+			<input type="submit" value="검색하기">
+		</form>
+		
 		<div>
 			<button type="button" class="list" onclick="location.href='/toy/board/list.do'">목록보기</button>
 			<c:if test="${ not empty id }">
@@ -63,6 +124,14 @@
 	</main>
 
 	<script>
+	
+		<c:if test="${map.search == 'y'}">
+		$('select[name=column]').val('${map.column}');
+		$('input[name=word]').val('${map.word}');
+		</c:if>
+		
+		// 셀렉트박스
+		$('#selPage').val(${nowPage});
 		
 	</script>
 </body>

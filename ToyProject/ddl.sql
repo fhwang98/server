@@ -46,7 +46,7 @@ drop SEQUENCE seqBoard;
 CREATE OR REPLACE VIEW vwBoard
 AS
 SELECT
-	seq, subject, id, readcount, 
+	seq, subject, id, readcount, content,
 	CASE
 		WHEN to_char(sysdate, 'YYYY-MM-DD') = to_char(regdate, 'YYYY-MM-DD') 
 				THEN to_char(regdate, 'hh24:mi:ss')
@@ -60,7 +60,7 @@ SELECT
 FROM tblboard ORDER BY seq DESC;
 
 
-
+SELECT * FROM tblboard;
 
 
 

@@ -21,8 +21,13 @@ public class Edit extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		//Edit.java
-		
 		//- view.do > 수정하기 버튼 클릭 > edit.do?seq=${}
+		
+		
+		
+		if (Auth.check(req, resp)) {
+			return;
+		}
 		
 		//1. 데이터 가져오기
 		String seq = req.getParameter("seq");
