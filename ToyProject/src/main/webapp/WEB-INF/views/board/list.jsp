@@ -30,6 +30,15 @@
 		text-align: center;
 		margin-bottom: 15px;
 	}
+	
+	.comment-count {
+		font-size: 12px;
+	}
+	
+	.comment-count::before {
+		content: '..';
+	}
+	
 </style>
 </head>
 <body>
@@ -87,6 +96,10 @@
 				<td>
 				
 					<a href="/toy/board/view.do?seq=${ dto.seq }&search=${map.search}&column=${map.column}&word=${map.word}">${ dto.subject }</a>
+					
+					<c:if test="${ dto.ccnt > 0 }">
+					<span class="comment-count">(${ dto.ccnt })</span>
+					</c:if>
 					
 					<c:if test="${ dto.isnew == 1 }">
 					<span class="is-new">new</span>

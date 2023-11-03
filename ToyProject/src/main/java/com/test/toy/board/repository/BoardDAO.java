@@ -6,9 +6,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.test.toy.DBUtil;
 import com.test.toy.board.model.BoardDTO;
+import com.test.toy.board.model.CommentDTO;
 
 public class BoardDAO {
 
@@ -73,6 +75,7 @@ public class BoardDAO {
 				dto.setReadcount(rs.getInt("readcount"));
 				dto.setName(rs.getString("name"));
 				dto.setIsnew(rs.getString("isnew"));
+				dto.setCcnt(rs.getString("ccnt"));
 				
 				list.add(dto);
 			}
@@ -193,6 +196,120 @@ public class BoardDAO {
 
 		} catch (Exception e) {
 			System.out.println("BoardDAO.getTotalCount()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public int addComment(CommentDTO dto) {
+		
+		try {
+			String sql = "INSERT INTO tblcomment (seq, content, regdate, id, bseq) "
+					+ "VALUES (seqComment.nextVal, ?, DEFAULT, ?, ?)";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getContent());
+			pstat.setString(2, dto.getId());
+			pstat.setString(3, dto.getBseq());
+
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("BoardDAO.addComment()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public ArrayList<CommentDTO> listComment(String bseq) {
+		
+		try {
+			
+			String sql = "SELECT c.*, (SELECT name FROM tblUser WHERE id = c.id) AS name "
+					+ "FROM tblComment c WHERE bseq = ? ORDER BY seq DESC";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, bseq);
+			
+			rs = pstat.executeQuery();	
+			
+			ArrayList<CommentDTO> list = new ArrayList<CommentDTO>();
+			
+			while (rs.next()) {
+				
+				CommentDTO dto = new CommentDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setContent(rs.getString("content"));
+				dto.setRegdate(rs.getString("regdate"));
+				dto.setId(rs.getString("id"));
+				dto.setBseq(rs.getString("bseq"));
+				
+				dto.setName(rs.getString("name"));
+				
+				list.add(dto);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println("BoardDAO.listComment()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	public int delComment(String seq) {
+		
+		try {
+			String sql = "DELETE FROM tblComment WHERE seq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("BoardDAO.delComment()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public void delCommentAll(String seq) {
+		
+		try {
+			String sql = "DELETE FROM tblComment WHERE bseq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+
+			pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("BoardDAO.delCommentAll()");
+			e.printStackTrace();
+		}
+		
+	}
+
+	public int editComment(CommentDTO dto) {
+		
+		try {
+			String sql = "UPDATE tblComment SET content = ? WHERE seq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getContent());
+			pstat.setString(2, dto.getSeq());
+
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("BoardDAO.editComment()");
 			e.printStackTrace();
 		}
 		

@@ -50,18 +50,10 @@ SELECT * FROM (SELECT a.*, rownum AS rnum FROM vwBoard a) WHERE rnum BETWEEN 11 
 
 
 
+-- 댓글
+SELECT * FROM tblcomment;
+
+INSERT INTO tblcomment (seq, content, regdate, id, bseq) VALUES (seqComment.nextVal, ?, DEFAULT, ?, ?);
 
 
 
-
-
-
-
-
-
-
-select tz_offset('Asia/seoul') from dual;
-
-alter session set time_zone = '+09:00';
-
-ROLLBACK;

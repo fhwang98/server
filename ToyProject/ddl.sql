@@ -56,11 +56,40 @@ SELECT
 	CASE
 		WHEN (sysdate - regdate) < 30 / 24 / 60 THEN 1
 		ELSE 0
-	END AS isnew
+	END AS isnew,
+	(SELECT count(*) FROM tblcomment WHERE bseq = tblBoard.seq) AS ccnt
 FROM tblboard ORDER BY seq DESC;
 
 
-SELECT * FROM tblboard;
+SELECT * FROM vwboard;
+
+
+
+
+--댓글 테이블
+CREATE TABLE tblComment (
+	seq NUMBER NOT NULL,
+	content varchar2(1000) NOT NULL,
+	regdate DATE DEFAULT sysdate NOT NULL,
+	id varchar2(50) NOT NULL, -- 글쓴이
+	bseq NUMBER NOT NULL, -- 부모 글번호
+	
+	CONSTRAINT tblcomment_pk PRIMARY KEY(seq),
+	CONSTRAINT tblboard_fk_id FOREIGN key(id) REFERENCES tblUser(id),
+	CONSTRAINT tblboard_fk_bseq FOREIGN key(bseq) REFERENCES tblBoard(seq)
+);
+
+
+CREATE SEQUENCE seqComment;
+
+
+
+
+
+
+
+
+
 
 
 

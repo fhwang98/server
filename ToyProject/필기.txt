@@ -60,10 +60,14 @@
 		- Del.java : 삭제
 		- Auth.java : 권한 확인
 		- Dummy.java : 더미 데이터
+		- Comment.java : 댓글
+		- DelComment.java : 댓글 삭제
+		- EditComment.java : 댓글 수정
 	6. com.test.toy.board.repository
-		- BoardDAO.java 
+		- BoardDAO.java
 	7. com.test.toy.board.model
 		- BoardDTO.java
+		- CommentDTO.java
 	8. com.test.toy.filter
 		- EncodingFilter.java
 		- AuthFilter.java
@@ -129,3 +133,16 @@ Favicon
 
 페이징
 - 다량의 게시물 > 한 화면에 출력하기 불편 > 가상의 페이지 분할 > 나눠서 출력 행위
+
+
+-------------------------------------------
+댓글
+
+댓글 삭제
+1. 다 지운다.
+	a. 딸린 댓글을 강제 삭제
+	b. 게시물 삭제
+2. 못 지운다.
+	a. 경고 > 네가 쓴 글에 댓글이 있어서 못지워~
+3. 삭제 대신 수정 
+	a. 이전의 회원 탈퇴 방식

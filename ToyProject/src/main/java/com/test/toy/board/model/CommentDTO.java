@@ -3,17 +3,12 @@ package com.test.toy.board.model;
 import lombok.Data;
 
 @Data
-public class BoardDTO {
-	
+public class CommentDTO {
 	private String seq;
-	private String subject;
 	private String content;
 	private String regdate;
-	private int readcount;
 	private String id;
+	private String bseq;
 	
 	private String name;
-	private String isnew;
-	private String ccnt;
-
 }
