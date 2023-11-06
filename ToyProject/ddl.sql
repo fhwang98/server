@@ -89,9 +89,31 @@ CREATE SEQUENCE seqComment;
 
 
 
+-- 지도
+-- 마커 저장 테이블
+CREATE TABLE tblMarker (
+	seq NUMBER PRIMARY KEY,
+	lat NUMBER NOT NULL,
+	lng NUMBER NOT NULL
+);
+
+CREATE SEQUENCE seqMarker;
 
 
+SELECT * FROM tblmarker;
 
+
+--ex04 즐겨찾기
+-- 장소 테이블
+CREATE TABLE tblPlace (
+	seq NUMBER PRIMARY KEY,
+	lat NUMBER NOT NULL,
+	lng NUMBER NOT NULL,
+	name varchar2(100) NOT NULL,
+	category varchar2(100) DEFAULT 'default' NOT NULL
+);
+
+CREATE SEQUENCE seqPlace;
 
 
 

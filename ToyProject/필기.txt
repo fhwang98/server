@@ -146,3 +146,44 @@ Favicon
 	a. 경고 > 네가 쓴 글에 댓글이 있어서 못지워~
 3. 삭제 대신 수정 
 	a. 이전의 회원 탈퇴 방식
+	
+-------------------------------------------
+
+
+Open API > map(지도)
+- Google Map
+- Naver Map
+- Kakao Map
+
+- 카카오맵 api
+- https://apis.map.kakao.com/web/guide/
+- 카카오 개발자 계정
+- https://developers.kakao.com/
+
+- "com.test.toy.map" > "Ex.java"
+- 					 > "MapDAO.java"
+- 					 > "MapDTO.java"
+- 					 > "AddMarker.java"
+
+- 					 > "AddPlace.java"
+- 					 > "ListPlace.java"
+- 					 > "DelPlace.java"
+- 					 > "PlaceDTO.java"
+
+
+- views > "map" > ex01.jsp
+- 				> ex02.jsp
+- 				> ex03.jsp
+- 				> ex04.jsp
+
+
+
+
+
+
+
+
+
+
+
+
