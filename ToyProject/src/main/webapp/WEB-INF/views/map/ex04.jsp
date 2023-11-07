@@ -17,6 +17,16 @@
 		margin: 0px 16px;
 		margin-bottom: 10px;
 	}
+	#list td {
+		cursor: pointer;
+	}
+	#list td span:last-child {
+		float: right;
+		display: none;
+	}
+	#list td:hover span:last-child {
+		display: inline;
+	}
 </style>
 </head>
 <body class="wide">
@@ -40,10 +50,8 @@
 				</td>
 			</tr>
 		</table>
-		<table>
-			<tr>
-				<td>aaa</td>
-			</tr>
+		<table id="list">
+			<tbody></tbody>
 		</table>
 		</div>
 	</div>
@@ -79,18 +87,52 @@
 				m.setMap(null);
 			}
 			
+			
+			//카테고리 확인
+			//$('#category').val() > 아이콘 이미지명
+			
+			let imageURL = '/toy/asset/marker/' + $('#category').val() + '.png';
+			let imageSize = new kakao.maps.Size(30, 30);
+			let option = {
+					//spriteOrigin: new kakao.maps.Point(10, 20),
+					//spriteSize: new kako.maps.Size(36, 98)
+			};
+			
+			let markerImage = new kakao.maps.MarkerImage(imageURL, imageSize, option);
+			
+			
 			m = new kakao.maps.Marker({
 				position: new kakao.maps.LatLng(lat, lng)
 			});
 			
+			m.setImage(markerImage);
 			m.setMap(map);
 			
 			$('#name').select();
 			
 		});
 		
+		$('#category').change(function() {
+			
+			// 마커가 있다면 > 아이콘 변경
+			if (m != null) {
+				
+				let imageURL = '/toy/asset/marker/' + $('#category').val() + '.png';
+				let imageSize = new kakao.maps.Size(30, 30);
+				let option = {};
+				
+				let markerImage = new kakao.maps.MarkerImage(imageURL, imageSize, option);
+				
+				m.setImage(markerImage);
+			}
+			
+		});
+		
+		
+		
 		// 추가하기
 		$('#btn').click(function() {
+			
 			$.ajax({
 				type: 'POST',
 				url: '/toy/map/addplace.do',
@@ -110,6 +152,7 @@
 						$('#name').select();
 						
 						// 추가한 목록을 아래 테이블에 출력
+						loda();
 						
 					} else {
 						alert('failed');
@@ -120,8 +163,113 @@
 					console.log(a, b, c);
 				}
 			});
+			
 		});
+		
+		load(); //함수 호이스팅
+		
+		function load() {
+			
+			$.ajax({
+				type: 'GET',
+				url: '/toy/map/listplace.do',
+				dataType: 'json',
+				success: function(result) {
+					
+					$('#list tbody').html('');
+					
+					$(result).each((index, item) => {
+						
+						$('#list tbody').append(`
+							
+							<tr>
+								<td onclick="selPlace(\${item.lat}, \${item.lng}, '\${item.category}');">
+								<span>\${item.name}</span>
+								<span title="delete" onclick="delPlace(\${item.seq});">&times;</span>
+								</td>
+							</tr>
+														
+						`);
+						
+					})
+				},
+				error: function(a, b, c) {
+					consolelog(a, b, c);
+				}
+			});
+			
+		}
+		
+		function selPlace(lat, lng, category) {
+			//해당 장소 > 위도, 경도, 마커 출력하기
+			//alert(lat + "," + lng);
+			
+			if (m != null) {
+				// 기존 마커 제거
+				m.setMap(null);
+			}
+			
+			//마커 이미지 추가
+			let imageURL = '/toy/asset/marker/' + category + '.png';
+			let imageSize = new kakao.maps.Size(30, 30);
+			let option = {};
+			
+			let markerImage = new kakao.maps.MarkerImage(imageURL, imageSize, option);
 				
+			
+			m = new kakao.maps.Marker({
+				position: new kakao.maps.LatLng(lat, lng)
+			});
+			
+			m.setImage(markerImage);
+			m.setMap(map);
+			
+			//map.setCenter()
+			map.panTo(new kakao.maps.LatLng(lat, lng));
+			
+			$('#list td').css('background-color', 'transparent');
+			$(event.currentTarget).css('background-color', 'gold');
+			
+		}
+		
+		function delPlace(seq) {
+			// 장소 삭제
+			
+			//delPlace 호출 후 > 이벤트 버블링 발생 > 부모의 클릭이벤트 selPlace() 호출
+			//이벤트 버블링 방지
+			event.stopPropagation();
+			event.cancleBubble = true;
+
+			$.ajax({
+				type: 'POST',
+				url: '/toy/map/delplace.do',
+				data: {
+					seq : seq
+				},
+				dataType: 'json',
+				success: function(result) {
+					if (result.result) {
+						
+						// 장소 삭제 완료
+						if (m != null) {
+							// 기존 마커 제거
+							m.setMap(null);
+						}
+						// 목록 새로고침
+						load();
+						
+					} else {
+						alert('failed');
+					}
+				},
+				error: function(a, b, c) {
+					console.log(a, b, c);
+				}
+			});
+			
+		}
+		
+		
 	</script>	
 </body>
 </html>

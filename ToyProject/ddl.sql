@@ -115,6 +115,6 @@ CREATE TABLE tblPlace (
 
 CREATE SEQUENCE seqPlace;
 
-
+SELECT * FROM tblplace;
 
 

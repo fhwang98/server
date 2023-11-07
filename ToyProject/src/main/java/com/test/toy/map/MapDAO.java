@@ -92,5 +92,57 @@ public class MapDAO {
 		
 		return 0;
 	}
+
+	public ArrayList<PlaceDTO> listPlace() {
+		
+		try {
+			
+			String sql = "SELECT * FROM tblPlace";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);	
+			
+			ArrayList<PlaceDTO> list = new ArrayList<PlaceDTO>();
+			
+			while (rs.next()) {
+				
+				PlaceDTO dto = new PlaceDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setLat(rs.getString("lat"));
+				dto.setLng(rs.getString("lng"));
+				dto.setName(rs.getString("name"));
+				dto.setCategory(rs.getString("category"));
+				
+				list.add(dto);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println("MapDAO.listPlace()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	public int delPlace(String seq) {
+		
+		try {
+			String sql = "DELETE FROM tblPlace WHERE seq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("MapDAO.delPlace()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 	
 }
