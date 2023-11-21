@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.test.ajax.model.CatDTO;
 import com.test.ajax.repository.AjaxDAO;
-import com.test.ajax.repository.CatDTO;
 
 @WebServlet("/ex07data.do")
 public class Ex07Data extends HttpServlet {

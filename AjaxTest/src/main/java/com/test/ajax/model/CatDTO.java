@@ -1,4 +1,4 @@
-package com.test.ajax.repository;
+package com.test.ajax.model;
 
 public class CatDTO {
 

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.test.ajax.model.AddressDTO;
+import com.test.ajax.model.CatDTO;
 import com.test.ajax.model.MemoDTO;
 
 public class AjaxDAO {

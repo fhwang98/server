@@ -21,3 +21,8 @@ COMMIT;
 
 
 
+
+
+-- Ex08 예제
+
+SELECT * FROM tbladdress;
